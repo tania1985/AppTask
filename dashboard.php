@@ -1,5 +1,5 @@
 <?php
-// Iniciar sesión (llámalo solo una vez en todo el proyecto)
+// Iniciar sesión
 session_start();
 
 // Verificar si el usuario ha iniciado sesión
@@ -45,5 +45,3 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Usuario desc
     <?php include("views/footer.php"); ?>
 </body>
 </html>
-
-

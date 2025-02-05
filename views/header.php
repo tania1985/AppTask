@@ -1,4 +1,4 @@
-<?php 
+<?php
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,13 +17,14 @@
             <li><a href="index.php">Inicio</a></li>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <li><a href="dashboard.php">Mis Tareas</a></li>
-                <li><a href="includes/logout.php">Cerrar Sesión</a></li>
+                <li><a href="logout.php"></a></li>
             <?php else: ?>
-                <li><a href="register.php">Registrarse</a></li>
+                <li><a href="registrer.php">Registrarse</a></li>
                 <li><a href="login.php">Iniciar Sesión</a></li>
             <?php endif; ?>
         </ul>
     </nav>
 </header>
 
-<main>
+<main> 
+
