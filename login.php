@@ -6,7 +6,7 @@ session_start();
 include('includes/conexiondb.php');  // Asegúrate de que el archivo config.php está en la carpeta 'includes'
 
 // Comprobar si el formulario de login ha sido enviado
-if (isset($_POST['login.php'])) {
+if (isset($_POST['username'])) {
     // Obtener los datos del formulario
     $username = $_POST['username'];
     $password = $_POST['password'];
