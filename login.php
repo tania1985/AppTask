@@ -3,7 +3,7 @@
 session_start();
 
 // Incluir archivo de configuración y conexión a la base de datos
-include('includes/config.php');  // Asegúrate de que el archivo config.php está en la carpeta 'includes'
+include('includes/conexiondb.php');  // Asegúrate de que el archivo config.php está en la carpeta 'includes'
 
 // Comprobar si el formulario de login ha sido enviado
 if (isset($_POST['login.php'])) {

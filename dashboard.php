@@ -38,7 +38,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Usuario desc
         </div>
 
         <!-- Enlace para cerrar sesión -->
-        <a href="includes/logout.php" class="logout">Cerrar sesión</a>
+        <a href="logout.php" class="logout">Cerrar sesión</a>
     </div>
 
     <!-- Footer -->
