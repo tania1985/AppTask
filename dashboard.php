@@ -8,9 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-
-// Verificar si la variable 'username' está disponible en la sesión
-$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Usuario desconocido';
 ?>
 
 <!DOCTYPE html>
@@ -38,12 +35,10 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Usuario desc
         </div>
 
         <!-- Enlace para cerrar sesión -->
-        <a href="logout.php" class="logout">Cerrar sesión</a>
+        <a href="includes/logout.php" class="logout">Cerrar sesión</a>
     </div>
 
     <!-- Footer -->
     <?php include("views/footer.php"); ?>
 </body>
 </html>
-
-
