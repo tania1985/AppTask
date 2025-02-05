@@ -1,0 +1,211 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo general del body */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN CONTENT */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* FORMULARIOS */
+form {
+    margin: 20px 0;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* BOTONES */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* LISTA DE TAREAS */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #ffffff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+ul li strong {
+    font-size: 16px;
+}
+
+/* LINKS DE ACCIONES */
+ul li a {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAJES DE ERROR Y ÉXITO */
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+/* MEDIA QUERIES PARA PANTALLAS MÁS PEQUEÑAS */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    main {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+    }
+
+    main {
+        margin: 20px 5px;
+        padding: 12px;
+    }
+
+    input, textarea {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+}
