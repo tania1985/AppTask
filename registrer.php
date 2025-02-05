@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userCount = $stmt->fetchColumn();
 
         if ($userCount > 0) {
-            echo "El nombre de usuario ya está registrado. Por favor, elige otro.";
+            echo "El nombre de usuario '$username' ya está registrado. Por favor, elige otro.";
         } else {
             // Encriptar la contraseña antes de guardarla
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
