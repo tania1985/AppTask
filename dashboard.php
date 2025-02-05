@@ -1,5 +1,5 @@
 <?php
-// Iniciar sesión (llámalo solo una vez en todo el proyecto)
+// Iniciar sesión
 session_start();
 
 // Verificar si el usuario ha iniciado sesión
@@ -8,6 +8,9 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+
+// Verificar si la variable 'username' está disponible en la sesión
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Usuario desconocido';
 ?>
 
 <!DOCTYPE html>
