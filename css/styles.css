@@ -156,6 +156,335 @@ footer {
     padding: 15px;
     border-top: 3px solid #ff79c6;
 }
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilo general */
+body {
+    background: #1e1e2e;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    background: #282a36;
+    color: #ff79c6;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+/* MAIN CONTENT */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #282a36;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Título de la sección */
+h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #f8f8f2;
+}
+
+/* Tabla de tareas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #44475a;
+    text-align: left;
+}
+
+table th {
+    background-color: #44475a;
+    color: #f8f8f2;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #282a36;
+    color: #ffffff;
+}
+
+table tr:nth-child(even) {
+    background-color: #33364d;
+}
+
+table tr:hover {
+    background-color: #50fa7b;
+    color: #1e1e2e;
+    cursor: pointer;
+}
+
+/* Enlace para volver al dashboard */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #8be9fd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes de error y éxito */
+p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.error {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+.success {
+    color: #50fa7b;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 30px;
+    background: #282a36;
+    color: #f8f8f2;
+    text-align: center;
+    padding: 15px;
+    border-top: 3px solid #ff79c6;
+}
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilo general */
+body {
+    background: #1e1e2e;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    background: #282a36;
+    color: #ff79c6;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+/* MAIN CONTENT */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #282a36;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Título de la sección */
+h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #f8f8f2;
+}
+
+/* Formulario de edición de perfil */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #44475a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f8f8f2;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #282a36;
+    color: #ffffff;
+}
+
+form input::placeholder {
+    color: #bbbbbb;
+}
+
+/* Botón de formulario */
+form button {
+    background: #50fa7b;
+    color: #1e1e2e;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: #38d47a;
+}
+
+/* Mensajes de Error y Éxito */
+p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.error {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+.success {
+    color: #50fa7b;
+    font-weight: bold;
+}
+
+/* Enlace para volver al dashboard */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #8be9fd;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 30px;
+    background: #282a36;
+    color: #f8f8f2;
+    text-align: center;
+    padding: 15px;
+    border-top: 3px solid #ff79c6;
+}
+
+/* Media Queries para dispositivos pequeños */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+    }
+
+    form {
+        font-size: 14px;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+    input {
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    form {
+        font-size: 12px;
+    }
+
+    input {
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px;
+    }
+}
+
+
+/* Media Queries para dispositivos pequeños */
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 22px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 10px;
+    }
+
+    a {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    a {
+        font-size: 12px;
+    }
+}
+
 
 /* MEDIA QUERIES PARA RESPONSIVE */
 @media screen and (max-width: 768px) {
