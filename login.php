@@ -2,38 +2,36 @@
 // Iniciar sesión al principio del archivo
 session_start();
 
-// Incluir archivo de configuración y conexión a la base de datos
-include('includes/conexiondb.php');  // Asegúrate de que el archivo config.php está en la carpeta 'includes'
+// Incluir conexión a la base de datos
+include('includes/conexiondb.php');
 
-// Comprobar si el formulario de login ha sido enviado
-if (isset($_POST['username'])) {
-    // Obtener los datos del formulario
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+// Verificar si el formulario de login ha sido enviado
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['username'], $_POST['password'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-    // Validar las credenciales en la base de datos
     try {
-        // Consulta para buscar al usuario por su nombre de usuario
+        // Preparar la consulta SQL
         $sql = "SELECT * FROM users WHERE username = :username LIMIT 1";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['username' => $username]);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verificar si el usuario existe y si la contraseña es correcta
+        // Validar contraseña
         if ($user && password_verify($password, $user['password'])) {
-            // La contraseña es correcta, iniciamos la sesión
-            $_SESSION['user_id'] = $user['id'];      // Guardamos el ID del usuario en la sesión
-            $_SESSION['username'] = $user['username']; // Guardamos el nombre de usuario en la sesión
+            // Almacenar datos en sesión
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
 
-            // Redirigir al dashboard o página principal
+            // Redirigir al dashboard
             header("Location: dashboard.php");
-            exit(); // Asegúrate de hacer un exit después de la redirección
+            exit();
         } else {
-            $error = "Credenciales incorrectas. Intenta de nuevo.";
+            $error = "❌ Credenciales incorrectas. Intenta de nuevo.";
         }
     } catch (PDOException $e) {
-        // Manejar cualquier error con la conexión o la consulta
-        echo "Error: " . $e->getMessage();
+        $error = "⚠️ Error en la conexión: " . $e->getMessage();
     }
 }
 ?>
@@ -43,24 +41,46 @@ if (isset($_POST['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Bienvenido a Web de Tareas</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
 
-    <!-- Formulario de login -->
-    <form method="POST" action="">
-        <label for="username">Nombre de usuario:</label>
-        <input type="text" name="username" id="username" required><br><br>
+<!-- Incluir Header -->
+<?php include("views/header.php"); ?>
 
-        <label for="password">Contraseña:</label>
-        <input type="password" name="password" id="password" required><br><br>
+<main class="landing-container">
+    <section class="hero">
+        <h2>Organiza y gestiona tus tareas de mantenimiento de forma eficiente</h2>
+        <p>Con nuestra plataforma, puedes administrar tus tareas, asignarlas y darles seguimiento fácilmente.</p>
 
-        <input type="submit" name="login" value="Iniciar sesión">
-    </form>
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <!-- Enlaces eliminados -->
+        <?php else: ?>
+            <a href="dashboard.php" class="btn btn-primary">Ir al Dashboard</a>
+        <?php endif; ?>
+          <!-- Formulario de Login -->
+    <section class="login-form">
+        <h1>Iniciar Sesión</h1>
 
-    <?php if (isset($error)): ?>
-        <p style="color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
+        <form method="POST" action="">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit" name="login" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+
+        <?php if (isset($error)): ?>
+            <p class="error"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+    </section>
+</main>
+
+<!-- Incluir Footer -->
+<?php include("views/footer.php"); ?>
+
 </body>
 </html>
