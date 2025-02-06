@@ -89,7 +89,7 @@ form label {
     color: #f8f8f2;
 }
 
-form input, form textarea {
+form input, form textarea, form select {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -119,69 +119,12 @@ form button:hover {
     background: #38d47a;
 }
 
-/* BOTONES GENERALES */
-.btn {
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-primary {
-    background: #ff79c6;
-    color: #1e1e2e;
-}
-
-.btn-primary:hover {
-    background: #ff92d0;
-}
-
-.btn-secondary {
-    background: #bd93f9;
-    color: #1e1e2e;
-}
-
-.btn-secondary:hover {
-    background: #caa5ff;
-}
-
-/* LISTA DE TAREAS */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    background: #44475a;
-    margin: 10px 0;
-    padding: 12px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-}
-
-ul li strong {
+/* Mensajes de Error y Éxito */
+p {
     font-size: 16px;
+    margin-top: 10px;
 }
 
-/* LINKS DE ACCIONES */
-ul li a {
-    color: #ff5555;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-ul li a:hover {
-    text-decoration: underline;
-}
-
-/* MENSAJES DE ERROR Y ÉXITO */
 .error {
     color: #ff5555;
     font-weight: bold;
@@ -192,7 +135,7 @@ ul li a:hover {
     font-weight: bold;
 }
 
-/* ENLACE PARA VOLVER AL DASHBOARD */
+/* Enlace para volver al dashboard */
 a {
     display: inline-block;
     margin-top: 20px;

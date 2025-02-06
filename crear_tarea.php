@@ -2,7 +2,7 @@
 session_start(); // Iniciar sesión para verificar que el usuario está autenticado
 
 // Verificar si el usuario está autenticado
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
     header('Location: login.php'); // Redirigir al login si no está autenticado
     exit();
 }
@@ -25,35 +25,53 @@ try {
 $error = "";
 $success = "";
 
-// Procesar el formulario de creación de tarea
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = trim($_POST['titulo']);
-    $descripcion = trim($_POST['descripcion']);
-    $estado = 'En proceso'; // Por defecto, las tareas estarán "En proceso"
-    $fecha_creacion = date('Y-m-d H:i:s'); // Fecha y hora actual
+// Obtener el user_id desde la sesión
+$user_id = $_SESSION['user_id'];
 
-    // Validar los campos
-    if (empty($titulo) || empty($descripcion)) {
-        $error = "Por favor, complete todos los campos.";
-    } else {
-        // Insertar la tarea en la base de datos
-        try {
-            $query = "INSERT INTO tareas (titulo, descripcion, fecha_creacion, estado) 
-                      VALUES (:titulo, :descripcion, :fecha_creacion, :estado)";
-            $stmt = $pdo->prepare($query);
-            $stmt->bindParam(':titulo', $titulo);
-            $stmt->bindParam(':descripcion', $descripcion);
-            $stmt->bindParam(':fecha_creacion', $fecha_creacion);
-            $stmt->bindParam(':estado', $estado);
+// Verificar si el user_id existe en la tabla users
+$query = "SELECT COUNT(*) FROM users WHERE id = :user_id";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$userExists = $stmt->fetchColumn();
 
-            $stmt->execute();
-            $success = "Tarea creada exitosamente.";
-        } catch (PDOException $e) {
-            $error = "Error al crear la tarea: " . $e->getMessage();
+if ($userExists == 0) {
+    $error = "El usuario no existe en la base de datos.";
+} else {
+    // Procesar el formulario de creación de tarea
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $titulo = trim($_POST['titulo']);
+        $descripcion = trim($_POST['descripcion']);
+        $estado_id = $_POST['estado_id']; // Obtener el estado_id del formulario
+        $fecha_creacion = date('Y-m-d H:i:s'); // Fecha y hora actual
+
+        // Validar los campos
+        if (empty($titulo) || empty($descripcion) || empty($estado_id)) {
+            $error = "Por favor, complete todos los campos.";
+        } else {
+            // Insertar la tarea en la base de datos
+            try {
+                $query = "INSERT INTO tareas (titulo, descripcion, fecha_creacion, estado_id, user_id) 
+                          VALUES (:titulo, :descripcion, :fecha_creacion, :estado_id, :user_id)";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':titulo', $titulo);
+                $stmt->bindParam(':descripcion', $descripcion);
+                $stmt->bindParam(':fecha_creacion', $fecha_creacion);
+                $stmt->bindParam(':estado_id', $estado_id);
+                $stmt->bindParam(':user_id', $user_id);
+
+                $stmt->execute();
+                $success = "Tarea creada exitosamente.";
+            } catch (PDOException $e) {
+                $error = "Error al crear la tarea: " . $e->getMessage();
+            }
         }
     }
 }
 ?>
+
+<!-- HTML y formulario permanecen igual -->
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -63,6 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Crear Tarea</title>
 </head>
 <body>
+
+<!-- Incluir el Header -->
+<?php include('views/header.php'); ?>
 
 <h2>Crear una nueva tarea</h2>
 
@@ -83,11 +104,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label for="descripcion">Descripción:</label><br>
     <textarea id="descripcion" name="descripcion" required></textarea><br><br>
 
+    <label for="estado">Estado:</label><br>
+    <select id="estado" name="estado_id" required>
+        <option value="">Seleccione un estado</option>
+        <option value="1">En proceso</option>
+        <option value="2">Terminado</option>
+    </select><br><br>
+
     <button type="submit">Crear tarea</button>
 </form>
 
+
 <!-- Enlace para volver al dashboard -->
 <a href="dashboard.php">Volver al Dashboard</a>
+
+<!-- Incluir el Footer -->
+<?php include('views/footer.php'); ?>
 
 </body>
 </html>
